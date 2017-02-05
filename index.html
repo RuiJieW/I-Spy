@@ -2,10 +2,12 @@
 <html>
 	<head>
 		<script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+		<script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
 	</head>
 	
 	<body>
 		<a-scene>
+
 
 			<a-assets>
 				<img id="texture" src="img/wallpaper.jpg" />
@@ -23,6 +25,10 @@
 				<img id="leather" src="img/leather.jpg" />
 				<img id="deskwood" src="img/deskwood.jpg" />
 
+				<!-- Audio -->
+				<audio id="ding" src="img/ding.mp3" preload="auto">
+				<audio id="mystoire" src="img/mystoire.mp3" preload="auto">
+
 				<!-- Chair -->
 				 <a-asset-item id="chair-obj" src="img/chair.obj"></a-asset-item>
     			<a-asset-item id="chair-mtl" src="img/chair.mtl"></a-asset-item>
@@ -34,13 +40,50 @@
     			<a-asset-item id="desk" src="img/desk3.obj"></a-asset-item>
 			</a-assets>
 
-			 <a-obj-model src="#couch-obj" mtl="#couch-mtl"></a-obj-model>
 
-			<!-- Camera -->
-<!-- 			<a-entity camera="userHeight: 500" look-controls></a-entity> -->
+		<a-entity sound="src:#mystoire; autoplay:true"> </a-entity>
 
+		<a-entity id="parentContainer" position="0 3.5 -1">
+      <a-animation begin="20000" visible="false"></a-animation>
 
-		 
+        <!--Background -->
+        <a-plane id="background" opacity="0.9" color="#4B9975" height="2" width="4"
+        position="0 2.37 -4.81"
+        scale="4 4 4"></a-plane>
+
+         <a-entity id="titleText" bmfont-text="text:--  I-SPY  --"
+         color="black"
+         position="-3 4.8 -4"
+         scale="5 5 5"></a-entity>
+
+         <a-entity id="description" bmfont-text="text: Welcome to the study,
+         look around to explore.
+         to find a Coin, a Ring and a Door. 
+         A stately Man watches Safe from the wall.
+         A Moose on the loose, can you find them all?
+         
+      	; align: center; letterSpacing: 5; lineHeight: 75; opacity: 1"
+         position="-4.8 0.4 -4.6"
+         scale="2 2 2"></a-entity>
+
+         <a-entity id="buttonText" bmfont-text="text: Let's Begin;
+         align: center; letterSpacing: 5; opacity: 1"
+         position="-5.02 -.55 -3.92"
+         scale="2 2 2"></a-entity>
+
+        
+        <!--Button-->
+        <a-plane id="button" color="white" height=".75" width="3"
+        position="-.05 -.45 -4"
+        scale="1 1 1">
+        </a-plane>
+
+        <a-entity id="cursorContainer" position="0 2.2 0.82">
+          
+           
+        </a-entity>
+    	</a-entity>
+
 			<!-- North Wall -->
 
 			<a-box 
@@ -138,6 +181,7 @@
 
 			<!-- Portrait -->
 
+			<a-entity sound="src:#ding; on: click">
 			<a-box 
 				rotation="0 90 0"
 				width="5" 
@@ -149,6 +193,7 @@
 			> 
 			<a-animation attribute="material.color" begin="click" from="#FFFFFF" to="orange" dur="1000">	</a-animation>
 			</a-box>
+			</a-entity>
 
 			<!-- Landscape -->
 			<a-box 
@@ -161,6 +206,8 @@
 			</a-box>
 
 			<!-- Door  -->
+
+			<a-entity sound="src:#ding; on: click">
 			<a-box 
 				rotation="0 90 0"
 				width="5" 
@@ -172,6 +219,7 @@
 			> 
 			<a-animation attribute="material.color" begin="click" from="#FFFFFF" to="orange" dur="1000">	</a-animation>
 			</a-box>
+			</a-entity>
 
 			<!-- Fireplace -->
 			<a-box 
@@ -199,6 +247,7 @@
 			</a-box>
 
 			<!-- Safe -->
+			<a-entity sound="src:#ding; on: click">
 			<a-box 
 				width="4" 
 				height="4"
@@ -208,8 +257,10 @@
 			> 
 			<a-animation attribute="material.color" begin="click" from="#FFFFFF" to="orange" dur="1000">	</a-animation>
 			</a-box>
+			</a-entity>
 
 			<!-- Coin -->
+			<a-entity sound="src:#ding; on: click">
 			<a-cylinder 
 				radius=".1"
 				height="0.02"
@@ -218,13 +269,13 @@
 			> 
 			<a-animation attribute="material.color" begin="click" from="#FFFFFF" to="orange" dur="1000">	</a-animation>
 			</a-cylinder>
+			</a-entity>
 
 			<!-- Couch -->
 			<a-obj-model 
 				scale="2 2 2"
 				src="#couch-obj" 
 				material="color:#330000">
-				<a-animation attribute="material.color" begin="click" from="#330000" to="orange" dur="1000">	</a-animation>
 			</a-obj-model>
 
 			<!-- Piano -->
@@ -237,6 +288,7 @@
 			</a-entity>
 
 			<!-- Ring -->
+			<a-entity sound="src:#ding; on: click">
 			<a-entity
 				material="color:#737373"
 				obj-model="obj: img/ring.obj"
@@ -245,6 +297,7 @@
 				rotation="90 0 0"
 				>
 				<a-animation attribute="material.color" begin="click" from="#737373" to="orange" dur="1000">
+			</a-entity>
 			</a-entity>
 
 
@@ -270,6 +323,7 @@
 			 </a-entity>
 
 			 <!-- Moosehead -->
+			 <a-entity sound="src:#ding; on: click">
 			 <a-entity
 			 	material="color: #321201"
 			 	position="-18 7 15"
@@ -277,6 +331,7 @@
 				scale="0.07 0.07 0.07"
 			 	>
 			 	<a-animation attribute="material.color" begin="click" from="#321201" to="orange" dur="1000">
+			 </a-entity>
 			 </a-entity>
 
 			  <!-- Plant -->
@@ -302,7 +357,6 @@
 		  		fill="backwards" from="0.1 0.1 0.1" to="1 1 1" dur="150"></a-animation>
 		  		<a-animation begin="fusing" easing="ease-in" attribute="scale"
 		  		fill="forwards" from="1 1 1" to="0.1 0.1 0.1" dur="1500"></a-animation>
-		  		<a-entity id="scoreBox" position="-40 15 0" scale="10 10 10" bmfont-text="text: Score: 0; color: orange;">
 		  	</a-entity>
 
 
@@ -315,20 +369,3 @@
 </html>
 
 
-<!-- search for object file and mtl-->
-
-
-<!-- THINGS WE NEED
-- grand piano
-- coffee table
-- desk and chair
-- plant
-- fireplace
-- fuckin... lil animal?
-- chaise lounge
--- window
-
-
-- put camera at door?
-
--->
