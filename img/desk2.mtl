@@ -1,0 +1,22 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Metal_Steel_Textured
+Ka 0.000000 0.000000 0.000000
+Kd 0.415686 0.431373 0.482353
+Ks 0.330000 0.330000 0.330000
+map_Kd desk2/Metal_Steel_Textured.jpg
+
+newmtl akb_bubinga
+Ka 0.000000 0.000000 0.000000
+Kd 0.274510 0.090196 0.070588
+Ks 0.330000 0.330000 0.330000
+map_Kd desk2/akb_bubinga.jpg
+
+newmtl cabana_mat2
+Ka 0.000000 0.000000 0.000000
+Kd 0.250980 0.184314 0.129412
+Ks 0.330000 0.330000 0.330000
+map_Kd desk2/cabana_mat2.jpg
+

@@ -1,66 +1,333 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
-  <head>
-    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
-    <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
-  </head>
-  <body>
-    <a-scene>
-      <!--<a-camera>
-        <a-cursor color="blue" scale="1 1 1"/>
-      </a-camera>-->
+	<head>
+		<script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+	</head>
+	
+	<body>
+		<a-scene>
 
-      <a-entity id="parentContainer" position="0 2.2 0.82">
-      <a-animation begin="click" visible="false"></a-animation>
+			<a-assets>
+				<img id="texture" src="img/wallpaper.jpg" />
+				<img id="bookshelf" src="img/bookshelf4.jpg" />
+				<img id="ceiling" src="img/ceiling2.jpg" />
+				<img id="floor" src="img/floor.jpg" />
+				<img id="carpet" src="img/carpet3.jpg" />
+				<img id="door" src="img/door.jpg" />
+				<img id="ladder" src="img/ladder.png" />
+				<img id="portrait" src="img/portrait.jpg" />
+				<img id="landscape" src="img/landscape.jpg" />
+				<img id="fireplace" src="img/fireplace.jpg" />
+				<img id="coin" src="img/coin-texture.jpg" />
 
-        <!--Background -->
-        <a-plane id="background" color="#4B9975" height="2" width="4"
-        position="0 2.37 -4.81"
-        scale="4 4 4"></a-plane>
+				<img id="leather" src="img/leather.jpg" />
+				<img id="deskwood" src="img/deskwood.jpg" />
 
-         <a-entity id="titleText" bmfont-text="text:--  I-SPY  --"
-         color="black"
-         position="-3 4 -4"
-         scale="5 5 5"></a-entity>
+				<!-- Chair -->
+				 <a-asset-item id="chair-obj" src="img/chair.obj"></a-asset-item>
+    			<a-asset-item id="chair-mtl" src="img/chair.mtl"></a-asset-item>
 
-         <a-entity id="description" bmfont-text="text: Welcome to the Study.
-         look around to explore
-         the room! Can you find 
-         the door, the portrait 
-         and contact on the floor?; align: center; letterSpacing: 5; lineHeight: 75; opacity: 1"
-         position="-4.8 0.4 -4.6"
-         scale="2 2 2"></a-entity>
+				<!-- Couch -->
+				 <a-asset-item id="couch-obj" src="img/couch.obj"></a-asset-item>
+    			<a-asset-item id="couch-mtl" src="img/couch.mtl"></a-asset-item>
 
-         <a-entity id="buttonText" bmfont-text="text: Let's Begin;
-         align: center; letterSpacing: 5; opacity: 1"
-         position="-5.02 -.55 -3.92"
-         scale="2 2 2"></a-entity>
+    			<a-asset-item id="desk" src="img/desk3.obj"></a-asset-item>
+			</a-assets>
 
-        
-        <!--Button-->
-        <a-plane id="button" color="white" height=".75" width="3"
-        position="-.05 -.45 -4"
-        scale="1 1 1">
-        </a-plane>
+			 <a-obj-model src="#couch-obj" mtl="#couch-mtl"></a-obj-model>
 
-        <a-entity id="cursorContainer" position="0 2.2 0.82">
-          <a-entity camera look-controls wasd-controls>
-            <a-entity position="0 0 -3"
-                      geometry="primitive: ring; radiusOuter: 0.30;
-                                radiusInner: 0.20;"
-                      material="color: cyan; shader: flat"
-                      cursor="maxDistance: 30; fuse: true">
-              <a-animation begin="click" easing="ease-in" attribute="scale"
-                   fill="backwards" from="0.1 0.1 0.1" to="1 1 1" dur="150"></a-animation>
-              <a-animation begin="fusing" easing="ease-in" attribute="scale"
-                   fill="forwards" from="1 1 1" to="0.1 0.1 0.1" dur="1500"></a-animation>
-            </a-entity>
-          </a-entity>
-        </a-entity>
+			<!-- Camera -->
+<!-- 			<a-entity camera="userHeight: 500" look-controls></a-entity> -->
 
-    </a-entity><!-- completeContainer-->
 
-    </a-scene>
+		 
+			<!-- North Wall -->
 
-  </body>
+			<a-box 
+				width="30" 
+				height="7.5"
+				depth="0.01"
+				position="0 7.5 -15" 
+				scale="2 2 2"
+				src="#texture"
+				repeat="2 1"
+			> 
+			</a-box>
+
+			<!-- South Wall -->
+			<a-box 
+				width="30" 
+				height="7.5"
+				depth="0.01"
+				position="0 7.5 15" 
+				scale="2 2 2"
+				src="#texture"
+				repeat="2 1"
+			> 
+			</a-box>
+
+			<!-- East Wall -->
+
+			<a-box 
+				rotation="0 90 0"
+				width="30" 
+				height="7.5"
+				depth="0.01"
+				position="-30 7.5 0" 
+				scale="2 2 2"
+				src="#texture"
+				repeat="2 1"
+			> 
+			</a-box>
+
+			<!-- West Wall -->
+
+			<a-box 
+				rotation="0 90 0"
+				width="30" 
+				height="7.5"
+				depth="0.01"
+				position="30 7.5 -15" 
+				scale="2 2 2"
+				src="#texture"
+				repeat="2 1"
+			> 
+			</a-box>
+
+
+			<!-- Ceiling -->
+
+			<a-box 
+				rotation="90 0 0"
+				width="30" 
+				height="15"
+				depth="0.01"
+				position="0 15 0" 
+				scale="2 2 2"
+				src="#ceiling"
+				repeat="7 7"
+				>
+			</a-box>
+
+			<!-- Hardwood Floor -->
+
+			<a-box 
+				rotation="-90 0 0"
+				width="30" 
+				height="15"
+				depth="0.01"
+				position="0 0 0" 
+				scale="2 2 2"
+				src="#floor"
+				repeat="5 5"
+			> 
+			</a-box>
+
+
+			<!-- Bookshelf -->
+
+			<a-box
+				width="30"
+				height="7.5"
+				depth="0.01"
+				position="0 7.5 -15"
+				scale="2 2 2"
+				src="#bookshelf"
+				repeat="3 1">
+			</a-box>
+
+			<!-- Portrait -->
+
+			<a-box 
+				rotation="0 90 0"
+				width="5" 
+				height="5"
+				depth="0.01"
+				position="-29.9 7.5 0" 
+				scale="2 2 2"
+				src="#portrait"
+			> 
+			<a-animation attribute="material.color" begin="click" from="#FFFFFF" to="orange" dur="1000">	</a-animation>
+			</a-box>
+
+			<!-- Landscape -->
+			<a-box 
+				width="15" 
+				height="7.5"
+				depth="0.01"
+				position="17 7.5 14.9" 
+				src="#landscape"
+			> 
+			</a-box>
+
+			<!-- Door  -->
+			<a-box 
+				rotation="0 90 0"
+				width="5" 
+				height="10"
+				depth="0.01"
+				position="29.9 4.7 -10" 
+				scale="1 1 1"
+				src="#door"
+			> 
+			<a-animation attribute="material.color" begin="click" from="#FFFFFF" to="orange" dur="1000">	</a-animation>
+			</a-box>
+
+			<!-- Fireplace -->
+			<a-box 
+				width="5" 
+				height="4"
+				depth="0.01"
+				position="0 4 14.9" 
+				scale="2 2 2"
+				src="#fireplace"
+			> 
+			</a-box>
+
+
+			<!-- Carpet -->
+
+			<a-box 
+				rotation="-90 0 0"
+				width="7" 
+				height="5"
+				depth="0.01"
+				position="0 0.01 0" 
+				scale="3 3 3"
+				src="#carpet"
+			> 
+			</a-box>
+
+			<!-- Safe -->
+			<a-box 
+				width="4" 
+				height="4"
+				depth="4"
+				position="31.9 7.5 10" 
+				src="img/safe.jpg"
+			> 
+			<a-animation attribute="material.color" begin="click" from="#FFFFFF" to="orange" dur="1000">	</a-animation>
+			</a-box>
+
+			<!-- Coin -->
+			<a-cylinder 
+				radius=".1"
+				height="0.02"
+				position="15 5 5" 
+				src="#coin"
+			> 
+			<a-animation attribute="material.color" begin="click" from="#FFFFFF" to="orange" dur="1000">	</a-animation>
+			</a-cylinder>
+
+			<!-- Couch -->
+			<a-obj-model 
+				scale="2 2 2"
+				src="#couch-obj" 
+				material="color:#330000">
+				<a-animation attribute="material.color" begin="click" from="#330000" to="orange" dur="1000">	</a-animation>
+			</a-obj-model>
+
+			<!-- Piano -->
+			<a-entity
+				obj-model="obj: img/piano.obj"
+				scale="5 5 5"
+				position="20 0 5"
+				rotation="0 -45 0"
+				material="color:#0f0f0f">
+			</a-entity>
+
+			<!-- Ring -->
+			<a-entity
+				material="color:#737373"
+				obj-model="obj: img/ring.obj"
+				scale="0.001 0.001 0.001"
+				position="-15 4.5 0"
+				rotation="90 0 0"
+				>
+				<a-animation attribute="material.color" begin="click" from="#737373" to="orange" dur="1000">
+			</a-entity>
+
+
+			<!-- Desk -->
+			<a-obj-model 
+				scale="0.02 0.02 0.02"
+				position="-15 0 0"
+				rotation="0 180 0"
+
+				src="#desk" 
+				material="color:#170d02">
+				
+			</a-obj-model>
+
+			<!-- Chair -->
+			 <a-entity 
+			 	material="color:#4d2500"
+			 	rotation="0 20 0"
+			 	position="-18 0 -2.8"
+				obj-model="obj: img/chair.obj"
+				scale="4 4 4"
+			 	>
+			 </a-entity>
+
+			 <!-- Moosehead -->
+			 <a-entity
+			 	material="color: #321201"
+			 	position="-18 7 15"
+				obj-model="obj: img/Moosehead.obj"
+				scale="0.07 0.07 0.07"
+			 	>
+			 	<a-animation attribute="material.color" begin="click" from="#321201" to="orange" dur="1000">
+			 </a-entity>
+
+			  <!-- Plant -->
+			 <a-entity
+			 	material="color: #5f841a"
+			 	position="-25 0 10"
+				obj-model="obj: img/plant.obj"
+				scale="0.01 0.02 0.01"
+			 	>
+			 </a-entity>
+
+
+
+			<!-- Camera  -->
+			<a-entity position="0 6 0">
+		  	<a-entity camera look-controls wasd-controls>
+		  		<a-entity position="0 0 -3"
+		  		geometry="primitive: ring; radiusOuter: 0.30;
+		  		radiusInner: 0.20;"
+		  		material="color: cyan; shader: flat"
+		  		cursor="maxDistance: 30; fuse: true">
+		  		<a-animation begin="click" easing="ease-in" attribute="scale"
+		  		fill="backwards" from="0.1 0.1 0.1" to="1 1 1" dur="150"></a-animation>
+		  		<a-animation begin="fusing" easing="ease-in" attribute="scale"
+		  		fill="forwards" from="1 1 1" to="0.1 0.1 0.1" dur="1500"></a-animation>
+		  	</a-entity>
+
+
+<!-- 		<a-entity camera="active:false;near:0.01;userHeight:1.6" wasd-controls="" look-controls="" aframe-injected="" data-aframe-inspector="default-camera" position="-1.9 4.3 1.9" rotation="-1.8 -8 0"></a-entity> -->
+			
+
+
+		</a-scene>
+	</body>
 </html>
+
+
+<!-- search for object file and mtl-->
+
+
+<!-- THINGS WE NEED
+- grand piano
+- coffee table
+- desk and chair
+- plant
+- fireplace
+- fuckin... lil animal?
+- chaise lounge
+-- window
+
+
+- put camera at door?
+
+-->
